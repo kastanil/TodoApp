@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://microsoft.com"
+             xmlns:x="http://microsoft.com"
+             x:Class="TodoApp.MainPage">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <HorizontalStackLayout Spacing="10">
+            <Entry x:Name="TaskEntry" Placeholder="Введите задачу" WidthRequest="250" />
+            <Button Text="Добавить" Clicked="OnAddClicked" />
+        </HorizontalStackLayout>
+
+        <Button Text="Сохранить список" Clicked="OnSaveClicked" BackgroundColor="Green" TextColor="White" />
+
+        <CollectionView x:Name="TasksCollection">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout Padding="5" Spacing="10">
+                        <CheckBox IsChecked="{Binding IsCompleted}" />
+                        <Label Text="{Binding Title}" VerticalOptions="Center" WidthRequest="200" />
+                        <Button Text="Удалить" Clicked="OnDeleteClicked" CommandParameter="{Binding .}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
